@@ -23,13 +23,16 @@ function ConvertHandler() {
       "mi": ["km", "kilometers", initNum => {return initNum*miToKm}]
     }
   this.getNum = function(input) {
-    let result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
+    let result;
+    if(checkRegExp.test(input)) result = 1;
+    result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
 
     return result;
   };
   
   this.getUnit = function(input) {
-    let result = input.substring(input.search(/[a-zA-Z]/g)).toLowerCase();
+    let result = input.substring(input.search(/[a-zA-Z]/g));
+    console.log(!checkRegExp.test(result))
     if(!checkRegExp.test(result)) return false;
     
     return result;
