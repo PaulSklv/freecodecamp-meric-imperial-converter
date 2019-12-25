@@ -15,12 +15,12 @@ function ConvertHandler() {
   const miToKm = 1.60934;
   
   const units = {
-      "l": ["gal", "gallons",    initNum => {return initNum/galToL}],
-      "kg": ["lbs", "pounds",    initNum => {return initNum/lbsToKg}],
-      "km": ["mi", "miles",      initNum => {return initNum/miToKm}],
-      "gal": ["l", "liters",     initNum => {return initNum*galToL}],
-      "lbs": ["kg", "kilograms", initNum => {return initNum*lbsToKg}],
-      "mi": ["km", "kilometers", initNum => {return initNum*miToKm}]
+      "l": ["gal", "gallons",    initNum => {return initNum/galToL}, "liters"],
+      "kg": ["lbs", "pounds",    initNum => {return initNum/lbsToKg}, "kilograms"],
+      "km": ["mi", "miles",      initNum => {return initNum/miToKm}, "kilometers"],
+      "gal": ["l", "liters",     initNum => {return initNum*galToL}, "gallons"],
+      "lbs": ["kg", "kilograms", initNum => {return initNum*lbsToKg}, "pounds"],
+      "mi": ["km", "kilometers", initNum => {return initNum*miToKm}, "miles"]
     }
   this.getNum = function(input) {
     let result;
@@ -33,8 +33,7 @@ function ConvertHandler() {
     else {
       if(result.search('/') !== -1) {
         let splitedArr = result.split('/');
-        console.log(splitedArr)
-        return parseFloat(splitedArr[0]) / parseFloat(splitedArr[1]) 
+        return splited;
       } else return parseFloat(result);
     }
   };
@@ -66,9 +65,8 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
-    
-    return `${}`;
+
+    return initNum + " " + units[initUnit][3] + " converts to " + returnNum + " " + returnUnit;
   };
   
 }
