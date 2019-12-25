@@ -7,7 +7,14 @@
 */
 
 function ConvertHandler() {
-  
+  const units = {
+      "l": ["gal", "gallons"],
+      "kg": ["lbs", "pounds"],
+      "km": ["mi", "miles"],
+      "gal": ["l", "liters"],
+      "lbs": ["kg", "kilograms"],
+      "mi": ["km", "kilometers"]
+    }
   this.getNum = function(input) {
     let result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
     
@@ -21,7 +28,7 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    const units
+
     const chekRegExp = /(^l$)|(^kg$)|(^km$)|(^gal$)|(^lbs$)|(^mi$)/gi;
     var result;
     
