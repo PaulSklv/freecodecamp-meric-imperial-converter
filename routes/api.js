@@ -20,8 +20,8 @@ module.exports = function (app) {
       var input = req.query.input;
       var initNum = convertHandler.getNum(input);
       var initUnit = convertHandler.getUnit(input);
-      if(!initNum) res.json({error: "Invalid number"});
-      else if(!initUnit) res.json({error: "Invalid unit"});
+      if(!initNum && initUnit) res.json({error: "Invalid number"});
+      else if(!initUnit && initNum) res.json({error: "Invalid unit"});
       else if(!initNum && !initUnit) res.json({error: "Invalid number and unit"});
       else {
         var returnNum = convertHandler.convert(initNum, initUnit);
