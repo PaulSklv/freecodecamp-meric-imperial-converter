@@ -22,7 +22,7 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    let result = input.substring(input.search(/[a-zA-Z]/g));
+    let result = input.substring(input.search(/[a-zA-Z]/g)).toLowerCase();
     
     return result;
   };
@@ -33,7 +33,7 @@ function ConvertHandler() {
     
     if(!checkRegExp.test(initUnit)) return false;
     
-    return result;
+    return units[initUnit.toLowerCase()][0];
   };
 
   this.spellOutUnit = function(unit) {
