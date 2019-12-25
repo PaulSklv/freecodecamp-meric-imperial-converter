@@ -9,13 +9,13 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    var result;
+    let result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
     
     return result;
   };
   
   this.getUnit = function(input) {
-    var result;
+    let result = input.substring(input.search(/[a-zA-Z]/g));
     
     return result;
   };
