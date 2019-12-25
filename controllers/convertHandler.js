@@ -25,9 +25,8 @@ function ConvertHandler() {
   this.getNum = function(input) {
     let result;
     if(checkRegExp.test(input)) return 1;
-    else return;
     result = input.substring(0, input.search(/[a-zA-Z]/g));
-    if(result === "" && typeof input[input.length - 1] === "number") return false
+    if(result === "") return false
     return parseFloat(result);
   };
   
