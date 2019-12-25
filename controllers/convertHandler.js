@@ -33,7 +33,12 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     let result = input.substring(input.search(/[a-zA-Z]/g));
-    if(result.search(/\d/g) !== -1)
+    if(result === "") return "Unit is missing";
+    else if(result.search(/\d/g) !== -1 && /\d/g.test(result[result.length - 1])) return "Unit is missing";
+    else if(result.search(/\d/g) !== -1 && !/\d/g.test(result[result.length - 1])) {
+      let newResult = result.split().reverse().join();
+      
+    }
     if(!checkRegExp.test(result)) return false;
     
     return result;
