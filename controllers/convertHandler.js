@@ -28,7 +28,12 @@ function ConvertHandler() {
     result = input.substring(0, input.search(/[a-zA-Z]/g));
     if(result === "" && input.search(/\d/g) !== -1) return false;
     else if(result === "" && input.search(/\d/g) === -1) return 1;
-    else return parseFloat(result);
+    else {
+      if(result.search('/') !== -1) {
+        let splitedArr = result.split('/');
+        return splitedArr[0]
+      }
+    }
   };
   
   this.getUnit = function(input) {
