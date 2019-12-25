@@ -8,6 +8,8 @@
 
 function ConvertHandler() {
   
+  const checkRegExp = /(^l$)|(^kg$)|(^km$)|(^gal$)|(^lbs$)|(^mi$)/gi;
+  
   const galToL = 3.78541;
   const lbsToKg = 0.453592;
   const miToKm = 1.60934;
@@ -22,21 +24,19 @@ function ConvertHandler() {
     }
   this.getNum = function(input) {
     let result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
-    
+    console.log(result)
     return result;
   };
   
   this.getUnit = function(input) {
     
     let result = input.substring(input.search(/[a-zA-Z]/g)).toLowerCase();
-    
+    console.log(result)
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
-    
-    const checkRegExp = /(^l$)|(^kg$)|(^km$)|(^gal$)|(^lbs$)|(^mi$)/gi;
-    
+    console.log(initUnit)
     if(!checkRegExp.test(initUnit)) return false;
     
     return units[initUnit.toLowerCase()][0];
@@ -49,11 +49,10 @@ function ConvertHandler() {
   };
   
   this.convert = function(initNum, initUnit) {
-    if()
+    console.log(initUnit)
+    if(!checkRegExp.test(initUnit)) return false;
     
-    let result = units[initUnit][2](initNum);
-    
-    return result.toFixed(5);
+    return units[initUnit][2](initNum).toFixed(5);
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
