@@ -25,9 +25,9 @@ function ConvertHandler() {
   this.getNum = function(input) {
     let result;
     // if(checkRegExp.test(input)) return 1;
-    result = input.substring(0, input.search(/[a-zA-Z]/g));
+    result = input.substring(0, input.search(/[a-zA-Z]/gi));
 
-    if(result === "" && input.search(/\d/g ) !== -1 && input.search(/[a-zA-Z]/g) !== -1) return false;
+    if(result === "" && input.search(/\d/g ) !== -1 && input.search(/[a-zA-Z]/gi) !== -1) return false;
     else if(result === "" && input.search(/\d/g) === -1) return 1;
     else if(result === "" && input.search(/[a-zA-Z]/g) === -1) return parseFloat(input);
     else {
@@ -41,7 +41,7 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    let result = input.substring(input.search(/[a-zA-Z]/g));
+    let result = input.substring(input.search(/[a-zA-Z]/gi));
     if(result === "") return "Unit is missing";
     else if(result.search(/\d/g) !== -1 && /\d/g.test(result[result.length - 1])) return "Unit is missing";
     else if(result.search(/\d/g) !== -1 && !/\d/g.test(result[result.length - 1])) {
