@@ -26,7 +26,6 @@ function ConvertHandler() {
     let result;
     // if(checkRegExp.test(input)) return 1;
     result = input.substring(0, input.search(/[a-zA-Z]/gi));
-
     if(result === "" && input.search(/\d/g ) !== -1 && input.search(/[a-zA-Z]/gi) !== -1) return false;
     else if(result === "" && input.search(/\d/g) === -1) return 1;
     else if(result === "" && input.search(/[a-zA-Z]/g) === -1) return parseFloat(input);
@@ -49,7 +48,7 @@ function ConvertHandler() {
       if(!checkRegExp.test(splitedResult[splitedResult.length - 1])) return false;
     }
     if(!checkRegExp.test(result)) return false;
-    return result;
+    return result.toLowerCase();
   };
   
   this.getReturnUnit = function(initUnit) {
@@ -57,9 +56,8 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
     
-    return result;
+    return units[unit.toLowerCase()][3];
   };
   
   this.convert = function(initNum, initUnit) {    
