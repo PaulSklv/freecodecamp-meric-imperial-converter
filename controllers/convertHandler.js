@@ -36,11 +36,10 @@ function ConvertHandler() {
     if(result === "") return "Unit is missing";
     else if(result.search(/\d/g) !== -1 && /\d/g.test(result[result.length - 1])) return "Unit is missing";
     else if(result.search(/\d/g) !== -1 && !/\d/g.test(result[result.length - 1])) {
-      let newResult = result.split().reverse().join();
-      
+      let splitedResult = result.split(/([\d.\d]+)/);
+      if(!checkRegExp.test(splitedResult[splitedResult.length - 1])) return false;
     }
     if(!checkRegExp.test(result)) return false;
-    
     return result;
   };
   
