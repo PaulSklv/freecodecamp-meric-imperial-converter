@@ -23,6 +23,7 @@ module.exports = function (app) {
       if(!initNum && initUnit) res.json({error: "Invalid number"});
       else if(!initUnit && initNum) res.json({error: "Invalid unit"});
       else if(!initNum && !initUnit) res.json({error: "Invalid number and unit"});
+      else if(initUnit === "Unit is missing") res.json({error:"Unit is missing"});
       else {
         var returnNum = convertHandler.convert(initNum, initUnit);
         var returnUnit = convertHandler.getReturnUnit(initUnit);

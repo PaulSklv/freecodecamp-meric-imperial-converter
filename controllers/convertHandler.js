@@ -27,15 +27,14 @@ function ConvertHandler() {
     // if(checkRegExp.test(input)) return 1;
     result = input.substring(0, input.search(/[a-zA-Z]/g));
 
-    if(result === "" && input.search(/\d/g) !== -1) return false;
+    if(result === "" && input.search(/\d/g ) !== -1 && input.search(/[a-zA-Z]/g) !== -1) return false;
     else if(result === "" && input.search(/\d/g) === -1) return 1;
+    else if(result === "" && input.search(/[a-zA-Z]/g) === -1) return parseFloat(input);
     else {
-      
       if(result.search('/') !== -1) {
-        
         let splitedArr = result.split('/');
-        
-        return parseFloat(splitedArr[0]) / parseFloat(splitedArr[2]) 
+        console.log(splitedArr)
+        return parseFloat(splitedArr[0]) / parseFloat(splitedArr[1]) 
       } else return parseFloat(result);
     }
   };
