@@ -26,7 +26,7 @@ function ConvertHandler() {
     let result;
     if(checkRegExp.test(input)) return 1;
     result = input.substring(0, input.search(/[a-zA-Z]/g));
-    if(result === "" && input[input.length - 1])
+    if(result === "" && typeof input[input.length - 1] === "number") return false
     return parseFloat(result);
   };
   

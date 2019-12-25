@@ -19,10 +19,10 @@ module.exports = function (app) {
     .get(function (req, res){
       var input = req.query.input;
       var initNum = convertHandler.getNum(input);
+      if(!initNum) res.json({error: "Invalid number"});
       var initUnit = convertHandler.getUnit(input);
       if(!initUnit) res.json({error: "Invalid unit"});
-      else if(!initNum) res.json({error: "Invalid number"});
-      else if(!initNum && !initUnit) res.json({error: "Invalid number and unit"});
+      if(!initNum && !initUnit) res.json({error: "Invalid number and unit"});
       else {
         var returnNum = convertHandler.convert(initNum, initUnit);
         var returnUnit = convertHandler.getReturnUnit(initUnit);
