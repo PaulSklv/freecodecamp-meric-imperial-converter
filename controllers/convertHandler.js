@@ -36,9 +36,9 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    console.log(initUnit)
-    if(!checkRegExp.test(initUnit)) return false;
     
+    // if(!checkRegExp.test(initUnit)) return false;
+    console.log(checkRegExp.test(initUnit))
     return units[initUnit.toLowerCase()][0];
   };
 
@@ -49,9 +49,10 @@ function ConvertHandler() {
   };
   
   this.convert = function(initNum, initUnit) {
-    console.log(initUnit)
-    if(!checkRegExp.test(initUnit)) return false;
     
+    // if(!checkRegExp.test(initUnit)) return false;
+    console.log(checkRegExp.test(initUnit))
+    console.log(typeof initUnit)
     return units[initUnit][2](initNum).toFixed(5);
   };
   
