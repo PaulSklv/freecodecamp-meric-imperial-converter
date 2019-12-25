@@ -21,6 +21,8 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
+    const units
+    const chekRegExp = /(^l$)|(^kg$)|(^km$)|(^gal$)|(^lbs$)|(^mi$)/gi;
     var result;
     
     return result;
