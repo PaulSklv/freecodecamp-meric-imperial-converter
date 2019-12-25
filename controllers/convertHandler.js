@@ -24,21 +24,18 @@ function ConvertHandler() {
     }
   this.getNum = function(input) {
     let result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
-    console.log(result)
+
     return result;
   };
   
   this.getUnit = function(input) {
-    
     let result = input.substring(input.search(/[a-zA-Z]/g)).toLowerCase();
-    console.log(result)
+    if(!checkRegExp.test(result)) return false;
+    
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
-    
-    // if(!checkRegExp.test(initUnit)) return false;
-    console.log(checkRegExp.test(initUnit))
     return units[initUnit.toLowerCase()][0];
   };
 
@@ -48,11 +45,7 @@ function ConvertHandler() {
     return result;
   };
   
-  this.convert = function(initNum, initUnit) {
-    
-    // if(!checkRegExp.test(initUnit)) return false;
-    console.log(checkRegExp.test(initUnit))
-    console.log(typeof initUnit)
+  this.convert = function(initNum, initUnit) {    
     return units[initUnit][2](initNum).toFixed(5);
   };
   
