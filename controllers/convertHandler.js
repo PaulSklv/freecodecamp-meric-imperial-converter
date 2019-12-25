@@ -26,8 +26,9 @@ function ConvertHandler() {
     let result;
     // if(checkRegExp.test(input)) return 1;
     result = input.substring(0, input.search(/[a-zA-Z]/g));
-    if(result === "" && input.search(/\d/g) !== -1) return false
-    return parseFloat(result);
+    if(result === "" && input.search(/\d/g) !== -1) return false;
+    else if(result === "" && input.search(/\d/g) === -1) return 1;
+    else return parseFloat(result);
   };
   
   this.getUnit = function(input) {
