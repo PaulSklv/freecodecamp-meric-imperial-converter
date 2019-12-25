@@ -28,9 +28,10 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-
-    const chekRegExp = /(^l$)|(^kg$)|(^km$)|(^gal$)|(^lbs$)|(^mi$)/gi;
-    var result;
+    
+    const checkRegExp = /(^l$)|(^kg$)|(^km$)|(^gal$)|(^lbs$)|(^mi$)/gi;
+    
+    if(!checkRegExp.test(initUnit)) return false;
     
     return result;
   };
