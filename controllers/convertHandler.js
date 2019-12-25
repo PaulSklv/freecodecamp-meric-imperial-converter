@@ -68,7 +68,7 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
     
-    return result;
+    return `${}`;
   };
   
 }
