@@ -33,6 +33,7 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     let result = input.substring(input.search(/[a-zA-Z]/g));
+    if(result.search(/\d/g) !== -1)
     if(!checkRegExp.test(result)) return false;
     
     return result;
