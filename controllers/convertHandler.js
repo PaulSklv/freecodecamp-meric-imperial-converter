@@ -31,9 +31,11 @@ function ConvertHandler() {
     else if(result === "" && input.search(/\d/g) === -1) return 1;
     else if(result === "" && input.search(/[a-zA-Z]/g) === -1) return parseFloat(input);
     else {
-      if(result.search('/') !== -1) {
-        let splitedArr = result.split('/');
-        return splited;
+      if(result.search(/\/(?=\/)/) === -1) {
+        let splitedResult= result.split('/');
+        return splitedResult.reduce((a, b) => a/b);
+      } else if(result.search(/\/(?=\/)/) !== -1) {
+        return false;
       } else return parseFloat(result);
     }
   };

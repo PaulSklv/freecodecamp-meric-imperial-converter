@@ -41,14 +41,15 @@ suite('Unit Tests', function(){
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      let input = '5/5/5km';
-      assert.equal(convertHandler.getNum(input), 0.5)
+      let input = '5//5km';
+      assert.equal(convertHandler.getNum(input), false)
       done();
     });
     
     test('No Numerical Input', function(done) {
-      
-      //done();
+      let input = 'km';
+      assert.equal(convertHandler.getNum(input), 1)
+      done();
     }); 
     
   });
