@@ -28,7 +28,7 @@ function ConvertHandler() {
     result = input.substring(0, input.search(/[a-zA-Z]/gi));
     if(result === "" && input.search(/\d/g ) !== -1 && input.search(/[a-zA-Z]/gi) !== -1) return false;
     else if(result === "" && input.search(/\d/g) === -1) return 1;
-    else if(result === "" && input.search(/[a-zA-Z]/g) === -1) return parseFloat(input);
+    else if(result === "" && input.search(/[a-zA-Z]/g) === -1) return Math.round(parseFloat(input)/10000);
     else {
       if(result.search(/\/(?=\/)/) === -1) {
         let splitedResult= result.split('/');
