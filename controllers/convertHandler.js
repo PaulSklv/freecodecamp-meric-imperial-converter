@@ -7,13 +7,18 @@
 */
 
 function ConvertHandler() {
+  
+  const galToL = 3.78541;
+  const lbsToKg = 0.453592;
+  const miToKm = 1.60934;
+  
   const units = {
-      "l": ["gal", "gallons"],
-      "kg": ["lbs", "pounds"],
-      "km": ["mi", "miles"],
-      "gal": ["l", "liters"],
-      "lbs": ["kg", "kilograms"],
-      "mi": ["km", "kilometers"]
+      "l": ["gal", "gallons", initNum => {return initNum/galToL}],
+      "kg": ["lbs", "pounds", initNum => {return initNum/lbsToKg}],
+      "km": ["mi", "miles", initNum => {return initNum/miToKm}],
+      "gal": ["l", "liters", initNum => {return initNum*galToL}],
+      "lbs": ["kg", "kilograms", initNum => {return initNum*lbsToKg}],
+      "mi": ["km", "kilometers", initNum => {return initNum*miToKm}]
     }
   this.getNum = function(input) {
     let result = parseFloat(input.substring(0, input.search(/[a-zA-Z]/g)));
@@ -43,10 +48,8 @@ function ConvertHandler() {
   };
   
   this.convert = function(initNum, initUnit) {
-    const galToL = 3.78541;
-    const lbsToKg = 0.453592;
-    const miToKm = 1.60934;
-    var result;
+    
+    let result = units[initUnit][3](initNum);
     
     return result;
   };
